@@ -9,7 +9,7 @@ class Link
   property :url, String
 end
 _development _test bookmarkmanager_production
-DataMapper.setup(:default, "bookmark_manager_#{ENV['RACK_ENV']}")
+DataMapper.setup(:default, "bookmarks-manager-#{ENV['RACK_ENV']}")
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
