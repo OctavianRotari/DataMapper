@@ -9,7 +9,7 @@ class Link
   property :url, String
 end
 
-DataMapper.setup(:default, "https://fast-escarpment-9450.herokuapp.com/")
+DataMapper.setup(:default, "#{ENV['DATABASE_URL']}")
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
