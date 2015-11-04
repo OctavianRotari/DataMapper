@@ -1,7 +1,7 @@
 require 'sinatra/base'
 require_relative 'models/link'
 
-ENV['RACK_ENV'] ||= 'production'
+ENV['RACK_ENV'] ||= 'development'
 
 class DataRecorder < Sinatra::Base
 

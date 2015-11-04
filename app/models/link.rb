@@ -8,8 +8,8 @@ class Link
   property :title, String
   property :url, String
 end
-_development _test bookmarkmanager_production
-DataMapper.setup(:default, "bookmarks-manager-#{ENV['RACK_ENV']}")
+
+DataMapper.setup(:default, "#{ENV['DATABASE_URL']}")
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
