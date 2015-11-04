@@ -1,6 +1,8 @@
 require 'capybara/rspec'
-require './app/app'
 require 'database_cleaner'
+
+ENV['RACK_ENV'] = 'test'
+require File.join(File.dirname(__FILE__), '../app', 'app.rb')
 
 Capybara.app = DataRecorder
 
