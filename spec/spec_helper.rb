@@ -1,5 +1,6 @@
 require 'capybara/rspec'
-require './app/models/link'
+require './app/app'
+Capybara.app = DataRecorder
 
 RSpec.configure do |config|
 
