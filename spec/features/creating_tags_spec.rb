@@ -1,12 +1,11 @@
+require 'web_helper'
+
 feature 'saving the web site' do
   scenario 'adding the site adress and title' do
-    visit('/links/new')
-    fill_in('Title', with: 'Hellokitty')
-    fill_in('url', with: 'http://www.hellokittylive.com/')
+    helper
     fill_in('Tag', with: 'kittens')
     click_button('Save')
-    within "ul#links" do
-      expect(page).to have_content('kittens')
-    end
+    link = Link.first
+    expect(link.tags.map(&:name)).to include('kittens')
   end
 end

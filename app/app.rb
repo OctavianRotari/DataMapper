@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require_relative 'models/link'
+require_relative 'data_mapper_setup'
 
 ENV['RACK_ENV'] ||= 'development'
 
@@ -12,7 +12,8 @@ class DataRecorder < Sinatra::Base
   post '/links' do
     @title = params[:Title]
     @url = params[:url]
-    @link = Link.create(title: @title, url: @url)
+    link = Link.create(title: @title, url: @url)
+
     redirect :links
   end
 
