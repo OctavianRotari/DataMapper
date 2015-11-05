@@ -13,7 +13,9 @@ class DataRecorder < Sinatra::Base
     @title = params[:Title]
     @url = params[:url]
     link = Link.create(title: @title, url: @url)
-
+    tag = Tag.new(name:params[:Tag])
+    link.tags << tag
+    link.save
     redirect :links
   end
 
