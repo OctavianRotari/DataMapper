@@ -16,7 +16,6 @@ class DataRecorder < Sinatra::Base
     tag = Tag.new(name:params[:Tag])
     link.tags << tag
     link.save
-    tag.save
     redirect :links
   end
 
@@ -27,8 +26,7 @@ class DataRecorder < Sinatra::Base
 
   get '/links/tag/kittens' do
     @kittens = 'kittens'
-    @search_tag = Link.all(:tags => {:name => @kittens})
-    p @search_tag
+    @chosen_tag = Link.all(:tags => {:name => @kittens})
     erb :'links/kittens'
   end
 
