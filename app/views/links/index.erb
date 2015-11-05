@@ -5,8 +5,17 @@
       <li>
         Title: <%= link.title %>
         URL:   <%= link.url   %>
+        Tag:   <%= (link.tags).pop.name  %>
       </li>
     <% end %>
   </ul>
-
+</div>
+<div>
+ <form action="/links/new" method="get">
+   <input type="submit" value="add new link">
+ </form>
+ <form action="/links/tags" method="get">
+   <input type="text"   name="tag_searched">
+   <input type="submit" value="search">
+ </form>
 </div>

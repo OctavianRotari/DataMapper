@@ -5,7 +5,7 @@ feature 'saving the web site' do
     helper
     click_button('Save')
     within "ul#links" do
-      expect(page).to have_content('Hellokitty')
+      expect(page).to have_content('Makersacademy')
     end
   end
 end

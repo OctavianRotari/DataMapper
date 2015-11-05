@@ -4,6 +4,7 @@ require_relative 'data_mapper_setup'
 ENV['RACK_ENV'] ||= 'development'
 
 class DataRecorder < Sinatra::Base
+  enable :sessions
 
   get '/'do
     redirect :links
@@ -15,9 +16,11 @@ class DataRecorder < Sinatra::Base
 
   post '/links' do
     link = Link.create(title: params[:title],
-                      url: params[:url])
-    tag = Tag.new(name:params[:tag])
-    link.tags << tag
+                       url: params[:url])
+    (params[:tag]).split.each do |tag|
+      tag = Tag.new(name:tag)
+      link.tags << tag
+    end
     link.save
     redirect :links
   end
@@ -27,8 +30,9 @@ class DataRecorder < Sinatra::Base
     erb :'links/index'
   end
 
-  get '/links/tags/:name' do
-    tag = Tag.all(name: params[:name])
+  get '/links/tags' do
+    session[:searched_tag] = params[:tag_searched]
+    tag = Tag.all(name: session[:searched_tag])
     @links = tag ? tag.links : []
     erb :'links/index'
   end
