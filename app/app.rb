@@ -5,6 +5,10 @@ ENV['RACK_ENV'] ||= 'development'
 
 class DataRecorder < Sinatra::Base
 
+  get '/'do
+    redirect :links
+  end
+
   get '/links/new' do
     erb :'links/new'
   end
@@ -24,10 +28,9 @@ class DataRecorder < Sinatra::Base
   end
 
   get '/links/tags/:name' do
-    tag = Tag.first(name: params[:name])
+    tag = Tag.all(name: params[:name])
     @links = tag ? tag.links : []
-    p @links
-    erb :'links/tags'
+    erb :'links/index'
   end
 
   # start the server if ruby file executed directly

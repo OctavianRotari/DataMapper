@@ -1,5 +1,3 @@
-require 'web_helper'
-
 feature 'visit page with indicated tag' do
 
   before(:each) do
