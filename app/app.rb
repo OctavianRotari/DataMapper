@@ -16,12 +16,20 @@ class DataRecorder < Sinatra::Base
     tag = Tag.new(name:params[:Tag])
     link.tags << tag
     link.save
+    tag.save
     redirect :links
   end
 
   get '/links' do
     @links = Link.all
     erb :'links/index'
+  end
+
+  get '/links/tag/kittens' do
+    @kittens = 'kittens'
+    @search_tag = Link.all(:tags => {:name => @kittens})
+    p @search_tag
+    erb :'links/kittens'
   end
 
   # start the server if ruby file executed directly
