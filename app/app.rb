@@ -10,10 +10,9 @@ class DataRecorder < Sinatra::Base
   end
 
   post '/links' do
-    @title = params[:Title]
-    @url = params[:url]
-    link = Link.create(title: @title, url: @url)
-    tag = Tag.new(name:params[:Tag])
+    link = Link.create(title: params[:title],
+                      url: params[:url])
+    tag = Tag.new(name:params[:tag])
     link.tags << tag
     link.save
     redirect :links
@@ -24,10 +23,11 @@ class DataRecorder < Sinatra::Base
     erb :'links/index'
   end
 
-  get '/links/tag/kittens' do
-    @kittens = 'kittens'
-    @chosen_tag = Link.all(:tags => {:name => @kittens})
-    erb :'links/kittens'
+  get '/links/tags/:name' do
+    tag = Tag.first(name: params[:name])
+    @links = tag ? tag.links : []
+    p @links
+    erb :'links/tags'
   end
 
   # start the server if ruby file executed directly
