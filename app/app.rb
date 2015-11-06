@@ -22,7 +22,6 @@ class DataRecorder < Sinatra::Base
       link.tags << tag
     end
     link.save
-    p link
     redirect :links
   end
 

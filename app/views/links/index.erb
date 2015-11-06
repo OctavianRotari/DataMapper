@@ -18,8 +18,9 @@
     <%= link.title %><br>
     URL:
     <a href="<%=link.url%>" target="_blank"><%=link.url%></a><br>
-    Tag:
-    <%=  %>
+    Tags: <% link.tags.each do |tag| %>
+        <%= tag.name %>
+        <% end %>
   </li>
   <% end %>
 </ul>
