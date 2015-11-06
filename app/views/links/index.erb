@@ -1,21 +1,25 @@
-<h1> Links </h1>
-<div class="center">
-  <ul id='links'>
-    <% @links.each do |link| %>
-      <li>
-        Title: <%= link.title %>
-        URL:   <%= link.url   %>
-        Tag:   <%= (link.tags).pop.name  %>
-      </li>
-    <% end %>
-  </ul>
+<link href="./../stylesheet.css" rel="stylesheet">
+<div class="submit">
+  <form action="/links/new" method="get">
+    <input type="submit" value="add new link">
+  </form>
+  <form action="/links/tags" method="get">
+    <input name="tag_searched" placeholder="insert tag" type="search">
+    <input type="submit" value="search">
+  </form>
 </div>
-<div>
- <form action="/links/new" method="get">
-   <input type="submit" value="add new link">
- </form>
- <form action="/links/tags" method="get">
-   <input type="text"   name="tag_searched">
-   <input type="submit" value="search">
- </form>
-</div>
+<h2>
+  Links
+</h2>
+<ul id='links'>
+  <% @links.each do |link| %>
+  <li>
+    Title:
+    <%= link.title %><br>
+    URL:
+    <a href="<%=link.url%>" target="_blank"><%=link.url%></a><br>
+    Tag:
+    <%=  %>
+  </li>
+  <% end %>
+</ul>

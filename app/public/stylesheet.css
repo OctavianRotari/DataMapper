@@ -1,5 +1,40 @@
-.center{
-  width: 200px;
-  margin: 0 auto;
+body{
+  font-family: cursive;
+  background-image: url(/images/31_white_abstract.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  font-family: fantasy;
+  color: #ee3e80;
+  text-align: center;
+}
+
+h2 {
+  font-family: fantasy;
+  color: #ee3e80;
   text-align: left;
+}
+
+form {
+  text-align: center;
+}
+
+input {
+  padding: 6px 12px 6px 12px;
+  border: 1px solid #665544;
+  color: #ee3e80;
+}
+input.submit {
+  background-color: #665544;
+}
+input.submit:active{
+  background-color: #69340f;
+}
+input.text{
+  color: #cccccc;
+}
+input.text:focus{
+  color: #665544;
 }

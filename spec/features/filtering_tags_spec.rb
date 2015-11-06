@@ -8,7 +8,7 @@ feature 'visit page with indicated tag' do
   end
 
   scenario 'displays all links with kittens tag' do
-      visit '/links/tags/bubbles'
+      visit '/links/tags?tag_searched=bubbles'
       expect(page.status_code).to eq(200)
       within 'ul#links' do
         expect(page).not_to have_content('Makers Academy')
