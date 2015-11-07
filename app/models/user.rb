@@ -9,7 +9,7 @@ class User
   property :name, String
   property :email, String
   property :password, BCryptHash, required: true,
-  message: "Confirmation password is different"
+  message: "Confirmation password and password are different"
 
   attr_accessor :password_confirmation
 

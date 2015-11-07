@@ -2,9 +2,11 @@ ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
 require_relative 'data_mapper_setup'
+require 'sinatra/flash'
 
 
 class DataRecorder < Sinatra::Base
+  register Sinatra::Flash
   enable :sessions
   set :session_secret, 'super secret'
 
@@ -17,8 +19,13 @@ class DataRecorder < Sinatra::Base
                        email: params[:email],
                        password: params[:password],
                        password_confirmation: params[:confirmation_password])
-    session[:user_id] = user.id
-    redirect :'links/new'
+    if user.save
+      session[:user_id] = user.id
+      redirect :'links/new'
+    else
+      flash.now[:notice] = "Confirmation password and password are different"
+      erb :'links/sing_in'
+    end
   end
 
   get '/links/new' do
