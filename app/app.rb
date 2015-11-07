@@ -18,7 +18,7 @@ class DataRecorder < Sinatra::Base
                        email: params[:email])
     session[:user_id] = user.id
 
-    redirect 'links/new'
+    redirect :'links/new'
   end
 
   get '/links/new' do
