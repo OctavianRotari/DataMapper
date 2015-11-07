@@ -7,9 +7,6 @@
       Welcome, <%= current_user.name %>
     <% end %></h1>
   <h1>Save your links</h1>
-  <form action="/links" method="get">
-    <input type="submit" value="show all links">
-  </form>
   <%=yield%>
   <% if flash[:notice] %>
     <div id='notice'><%= flash[:notice] %></div>
