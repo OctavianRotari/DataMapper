@@ -1,8 +1,8 @@
-require 'web_helper'
-
 feature 'saving the web site' do
   scenario 'adding the site adress and title' do
-    helper
+    visit('/links/new')
+    fill_in('title', with: 'Makersacademy')
+    fill_in('url', with: 'http://www.makersacademy.com')
     fill_in('tag', with: 'coding')
     click_button('Save')
     link = Link.first

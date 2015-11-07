@@ -1,5 +1,7 @@
-def helper
-  visit('/links/new')
-  fill_in('title', with: 'Makersacademy')
-  fill_in('url', with: 'http://www.makersacademy.com')
+def sign_in
+  visit ('/')
+  fill_in 'name', with: 'Octavian'
+  fill_in 'email', with: 'octavian@.com'
+  fill_in 'password', with: '1234'
+  click_button('sign in')
 end

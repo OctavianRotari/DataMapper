@@ -3,6 +3,9 @@
   <title> Save your links </title>
 </head>
 <body>
+  <h1><% if current_user %>
+      Welcome, <%= current_user.name %>
+    <% end %></h1>
   <h1>Save your links</h1>
   <%=yield%>
 </body>

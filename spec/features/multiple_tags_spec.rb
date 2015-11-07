@@ -1,6 +1,8 @@
 feature 'adding multiple tags' do
   scenario 'ads multiple tags to the same link' do
-    helper
+    visit('/links/new')
+    fill_in('title', with: 'Makersacademy')
+    fill_in('url', with: 'http://www.makersacademy.com')
     fill_in('tag', with: 'coding education')
     click_button('Save')
     link = Link.first
