@@ -1,7 +1,11 @@
-def sign_in
-  visit ('/')
-  fill_in 'name', with: 'Octavian'
-  fill_in 'email', with: 'octavian@.com'
-  fill_in 'password', with: '1234'
-  click_button('sign in')
+def sign_in( name: 'Alice',
+            email: 'alice@example.com',
+            password: '12345678',
+            confirmation_password: '12345678')
+  visit '/'
+  fill_in :name, with: name
+  fill_in :email, with: email
+  fill_in :password, with: password
+  fill_in :confirmation_password, with: confirmation_password
+  click_button 'sign in'
 end

@@ -14,10 +14,10 @@ class DataRecorder < Sinatra::Base
 
   post '/user' do
     user = User.create(name: params[:name],
+                       email: params[:email],
                        password: params[:password],
-                       email: params[:email])
+                       password_confirmation: params[:confirmation_password])
     session[:user_id] = user.id
-
     redirect :'links/new'
   end
 

@@ -1,4 +1,5 @@
 require 'bcrypt'
+require 'dm-validations'
 
 class User
   include DataMapper::Resource
@@ -7,9 +8,11 @@ class User
   property :id, Serial
   property :name, String
   property :email, String
-  property :password, BCryptHash
+  property :password, BCryptHash, required: true,
+  message: "Confirmation password is different"
 
-  # def password=(password)
-  #   self.password_digest = BCryptPassword.create(new_password)
-  # end
+  attr_accessor :password_confirmation
+
+  validates_confirmation_of :password, confirm: :password_confirmation
+
 end
